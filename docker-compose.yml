@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  chaqaqclabapi:
+    image: ${DOCKER_REGISTRY-}chaqaqclabapi
+    build:
+      context: .
+      dockerfile: ChaQaQcLabApi/Dockerfile

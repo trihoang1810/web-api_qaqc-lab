@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChaQaQcLabApi", "ChaQaQcLabApi\ChaQaQcLabApi.csproj", "{0B7678E2-6077-440C-A7CF-9382A6D01BC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChaQaQcLabApi", "ChaQaQcLabApi\ChaQaQcLabApi.csproj", "{0B7678E2-6077-440C-A7CF-9382A6D01BC5}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{29931430-4B04-43B9-BC67-C7C1C2BD527F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0B7678E2-6077-440C-A7CF-9382A6D01BC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B7678E2-6077-440C-A7CF-9382A6D01BC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B7678E2-6077-440C-A7CF-9382A6D01BC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29931430-4B04-43B9-BC67-C7C1C2BD527F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29931430-4B04-43B9-BC67-C7C1C2BD527F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29931430-4B04-43B9-BC67-C7C1C2BD527F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29931430-4B04-43B9-BC67-C7C1C2BD527F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  chaqaqclabapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "8084:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      
+  sqlserverdb:
+    image: datlesistrain123/chasqlserver2019
+    hostname: sql-server-qa-qc-lab
+    container_name: sql-server-qa-qc-lab
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings:LocalSqlServerIp
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=@dmin123
+    ports:
+      - "1438:1433"
