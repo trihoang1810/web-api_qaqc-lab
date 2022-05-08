@@ -37,33 +37,35 @@ public class ForcedCloseEntityTypeConfiguration : IEntityTypeConfiguration<Force
             .HasMaxLength(256)
             .IsRequired();
 
-        forcedCloseTestConfiguration
-            .OwnsOne(f => f.ExpectedOutcome,
-            f =>
-            {
-                f.WithOwner();
-                f.Property(f => f.Passed)
-                    .IsRequired();
-                f.Property(f => f.IsUnleaked)
-                    .IsRequired();
-                f.Property(f => f.IsIntact)
-                    .IsRequired();
-                f.Property(f => f.FallTime)
-                    .IsRequired();
-            });
 
         forcedCloseTestConfiguration
             .OwnsMany(f => f.Samples,
             f =>
             {
                 f.WithOwner();
-                f.Property(f => f.SampleNumber)
+                f.Property(f => f.NumberOfClosing)
+                    .IsRequired();
+                f.Property(f => f.NumberOfError)
                     .IsRequired();
                 f.Property(f => f.Note)
                     .IsRequired()
                     .HasMaxLength(256);
 
-                f.OwnsOne(f => f.Result,
+                f.OwnsOne(f => f.SeatRingResult,
+                    f =>
+                    {
+                        f.WithOwner();
+                        f.Property(f => f.Passed)
+                            .IsRequired();
+                        f.Property(f => f.IsUnleaked)
+                            .IsRequired();
+                        f.Property(f => f.IsIntact)
+                            .IsRequired();
+                        f.Property(f => f.FallTime)
+                            .IsRequired();
+                    });
+
+                f.OwnsOne(f => f.SeatLidResult,
                     f =>
                     {
                         f.WithOwner();

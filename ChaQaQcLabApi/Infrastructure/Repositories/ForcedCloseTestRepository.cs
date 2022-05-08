@@ -11,7 +11,6 @@ public class ForcedCloseTestRepository : BaseRepository, IForcedCloseTestReposit
     {
         var tests = await _context.ForcedCloseTests
             .Include(f => f.Samples)
-            .Include(f => f.ExpectedOutcome)
             .Include(f => f.Product)
             .Include(f => f.Tester)
             .Where(f =>
@@ -36,7 +35,6 @@ public class ForcedCloseTestRepository : BaseRepository, IForcedCloseTestReposit
     {
         var tests = await _context.ForcedCloseTests
             .Include(f => f.Samples)
-            .Include(f => f.ExpectedOutcome)
             .Include(f => f.Product)
             .Include(f => f.Tester)
             .Where(f =>

@@ -42,6 +42,8 @@ public class RockTestEntityTypeConfiguration : IEntityTypeConfiguration<RockTest
             r =>
             {
                 r.WithOwner();
+                r.Property(r => r.Load)
+                    .IsRequired();
                 r.Property(r => r.TestedTimes)
                     .IsRequired();
                 r.Property(r => r.Passed)

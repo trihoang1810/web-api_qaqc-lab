@@ -11,8 +11,6 @@ public class SoftCloseTestRepository : BaseRepository, ISoftCloseTestRepository
     {
         var tests = await _context.SoftCloseTests
             .Include(s => s.Samples)
-            .Include(s => s.SeatLidExpectedOutcome)
-            .Include(s => s.SeatRingExpectedOutcome)
             .Include(s => s.Product)
             .Include(s => s.Tester)
             .Where(s =>
@@ -37,8 +35,6 @@ public class SoftCloseTestRepository : BaseRepository, ISoftCloseTestRepository
     {
         var tests = await _context.SoftCloseTests
             .Include(s => s.Samples)
-            .Include(s => s.SeatLidExpectedOutcome)
-            .Include(s => s.SeatRingExpectedOutcome)
             .Include(s => s.Product)
             .Include(s => s.Tester)
             .Where(s =>

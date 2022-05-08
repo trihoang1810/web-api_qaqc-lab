@@ -18,6 +18,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<SoftCloseTestSampleResult> SoftCloseTestSampleResults { get; set; }
     public DbSet<StaticLoadTest> StaticLoadTests { get; set; }
     public DbSet<StaticLoadTestSample> StaticLoadTestSamples { get; set; }
+    public DbSet<WaterProofingTest> WaterProofingTests { get; set; }
+    public DbSet<WaterProofingTestSample> WaterProofingTestSamples { get; set; }
 
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
     public ApplicationDbContext(DbContextOptions options) : base(options)

@@ -38,33 +38,15 @@ public class SoftCloseTestEntityTypeConfiguration : IEntityTypeConfiguration<Sof
             .IsRequired();
 
         softCloseTestConfiguration
-            .OwnsOne(s => s.SeatLidExpectedOutcome,
-            s =>
-            {
-                s.WithOwner();
-                s.Property(s => s.Passed).IsRequired();
-                s.Property(s => s.IsUnleaked).IsRequired();
-                s.Property(s => s.FallTime).IsRequired();
-                s.Property(s => s.IsBumperIntact).IsRequired();
-            });
-
-        softCloseTestConfiguration
-            .OwnsOne(s => s.SeatRingExpectedOutcome,
-            s =>
-            {
-                s.WithOwner();
-                s.Property(s => s.Passed).IsRequired();
-                s.Property(s => s.IsUnleaked).IsRequired();
-                s.Property(s => s.FallTime).IsRequired();
-                s.Property(s => s.IsBumperIntact).IsRequired();
-            });
-
-        softCloseTestConfiguration
             .OwnsMany(s => s.Samples,
             s =>
             {
                 s.WithOwner();
-                s.Property(s => s.SampleNumber).IsRequired();
+                s.Property(s => s.NumberOfClosing)
+                    .IsRequired();
+                s.Property(s => s.NumberOfError)
+                    .IsRequired();
+
                 s.OwnsOne(s => s.SeatLidResult,
                     s =>
                     {
@@ -74,6 +56,7 @@ public class SoftCloseTestEntityTypeConfiguration : IEntityTypeConfiguration<Sof
                         s.Property(s => s.IsUnleaked).IsRequired();
                         s.Property(s => s.IsBumperIntact).IsRequired();
                     });
+
                 s.OwnsOne(s => s.SeatRingResult,
                     s =>
                     {
@@ -87,6 +70,7 @@ public class SoftCloseTestEntityTypeConfiguration : IEntityTypeConfiguration<Sof
                         s.Property(s => s.IsBumperIntact)
                             .IsRequired();
                     });
+
                 s.Property(s => s.Note)
                     .HasMaxLength(256)
                     .IsRequired();

@@ -42,8 +42,6 @@ public class CurlingForceTestEntityTypeConfiguration : IEntityTypeConfiguration<
             c =>
             {
                 c.WithOwner();
-                c.Property(c => c.SampleNumber)
-                    .IsRequired();
                 c.Property(c => c.Load)
                     .IsRequired();
                 c.Property(c => c.Duration)
