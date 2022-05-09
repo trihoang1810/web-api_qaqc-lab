@@ -13,7 +13,7 @@ public class RockTestEntityTypeConfiguration : IEntityTypeConfiguration<RockTest
             .IsUnique();
         rockTestConfiguration
             .Property(r => r.Id)
-            .UseHiLo();
+            .ValueGeneratedOnAdd();
 
         rockTestConfiguration
             .Property(r => r.StartDate)
@@ -48,16 +48,12 @@ public class RockTestEntityTypeConfiguration : IEntityTypeConfiguration<RockTest
                     .IsRequired();
                 r.Property(r => r.Passed)
                     .IsRequired();
-                r.Property(r => r.Note)
-                    .IsRequired()
-                    .HasMaxLength(256);
-                r.Property(r => r.NumberOfErrors)
+                r.Property(r => r.NumberOfError)
                     .IsRequired();
-            });
 
-        rockTestConfiguration
-            .HasOne(r => r.Tester)
-            .WithMany()
-            .HasForeignKey(r => r.EmployeeId);
+                r.HasOne(r => r.Tester)
+                    .WithMany()
+                    .HasForeignKey(r => r.EmployeeId);
+            });
     }
 }

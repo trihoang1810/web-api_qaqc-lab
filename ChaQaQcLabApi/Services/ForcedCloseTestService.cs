@@ -32,7 +32,7 @@ public class ForcedCloseTestService : IForcedCloseTestService
 
         return new Response<QueryResult<ForcedCloseTest>>(tests);
     }
-    public async Task<Response<ForcedCloseTest>> PostAsync(ForcedCloseTest resource)
+    public async Task<Response<ForcedCloseTest>> PostAsync(ForcedCloseTest resource, string employeeId)
     {
         try
         {
@@ -43,7 +43,7 @@ public class ForcedCloseTestService : IForcedCloseTestService
                 return new Response<ForcedCloseTest>(error);
             }
 
-            var tester = await _testerRepository.GetByIdAsync(resource.EmployeeId);
+            var tester = await _testerRepository.GetByIdAsync(employeeId);
             if (tester is null)
             {
                 var error = Error.BadRequest("404", "Product not found");

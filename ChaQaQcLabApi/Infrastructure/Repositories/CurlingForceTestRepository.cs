@@ -11,8 +11,8 @@ public class CurlingForceTestRepository : BaseRepository, ICurlingForceTestRepos
     {
         var tests = await _context.CurlingForceTests
             .Include(c => c.Samples)
+                .ThenInclude(c => c.Tester)
             .Include(c => c.Product)
-            .Include(c => c.Tester)
             .Where(c => 
                 c.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
                 c.EndDate.CompareTo(query.TimeRange.StopTime.Value) <= 0)
@@ -35,8 +35,8 @@ public class CurlingForceTestRepository : BaseRepository, ICurlingForceTestRepos
     {
         var tests = await _context.CurlingForceTests
             .Include(c => c.Samples)
+                .ThenInclude(c => c.Tester)
             .Include(c => c.Product)
-            .Include(c => c.Tester)
             .Where(c =>
                 c.ProductId == productId &&
                 c.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
@@ -59,7 +59,10 @@ public class CurlingForceTestRepository : BaseRepository, ICurlingForceTestRepos
     public async Task AddAsync(Product product, Tester tester, CurlingForceTest curlingForceTest)
     {
         curlingForceTest.Product = product;
-        curlingForceTest.Tester = tester;
+        foreach (CurlingForceTestSample sample in curlingForceTest.Samples)
+        {
+            sample.Tester = tester;
+        }
         await _context.AddRangeAsync(curlingForceTest);
     }
 }

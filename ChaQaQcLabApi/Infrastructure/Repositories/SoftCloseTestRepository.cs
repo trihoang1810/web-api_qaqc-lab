@@ -11,8 +11,8 @@ public class SoftCloseTestRepository : BaseRepository, ISoftCloseTestRepository
     {
         var tests = await _context.SoftCloseTests
             .Include(s => s.Samples)
+                .ThenInclude(s => s.Tester)
             .Include(s => s.Product)
-            .Include(s => s.Tester)
             .Where(s =>
                 s.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
                 s.EndDate.CompareTo(query.TimeRange.StopTime.Value) <= 0)
@@ -35,8 +35,8 @@ public class SoftCloseTestRepository : BaseRepository, ISoftCloseTestRepository
     {
         var tests = await _context.SoftCloseTests
             .Include(s => s.Samples)
+                .ThenInclude(s => s.Tester)
             .Include(s => s.Product)
-            .Include(s => s.Tester)
             .Where(s =>
                 s.ProductId == productId &&
                 s.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
@@ -59,7 +59,10 @@ public class SoftCloseTestRepository : BaseRepository, ISoftCloseTestRepository
     public async Task AddAsync(Product product, Tester tester, SoftCloseTest softCloseTest)
     {
         softCloseTest.Product = product;
-        softCloseTest.Tester = tester;
+        foreach (SoftCloseTestSample sample in softCloseTest.Samples)
+        {
+            sample.Tester = tester;
+        }
         await _context.AddRangeAsync(softCloseTest);
     }
 }

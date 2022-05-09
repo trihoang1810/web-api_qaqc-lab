@@ -32,7 +32,7 @@ public class WaterProofingTestService : IWaterProofingTestService
 
         return new Response<QueryResult<WaterProofingTest>>(tests);
     }
-    public async Task<Response<WaterProofingTest>> PostAsync(WaterProofingTest resource)
+    public async Task<Response<WaterProofingTest>> PostAsync(WaterProofingTest resource, string employeeId)
     {
         try
         {
@@ -43,7 +43,7 @@ public class WaterProofingTestService : IWaterProofingTestService
                 return new Response<WaterProofingTest>(error);
             }
 
-            var tester = await _testerRepository.GetByIdAsync(resource.EmployeeId);
+            var tester = await _testerRepository.GetByIdAsync(employeeId);
             if (tester is null)
             {
                 var error = Error.BadRequest("404", "Product not found");

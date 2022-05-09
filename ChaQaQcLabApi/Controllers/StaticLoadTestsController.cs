@@ -41,7 +41,7 @@ public class StaticLoadTestsController : Controller
     {
         var test = _mapper.Map<SaveStaticLoadViewModel, StaticLoadTest>(resource);
 
-        var result = await _staticLoadTestService.PostAsync(test);
+        var result = await _staticLoadTestService.PostAsync(test, resource.EmployeeId);
 
         if (!result.Success)
         {

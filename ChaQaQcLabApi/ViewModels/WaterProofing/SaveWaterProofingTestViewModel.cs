@@ -2,5 +2,5 @@
 
 public class SaveWaterProofingTestViewModel : SaveTestViewModel
 {
-    public List<WaterProofingTestSampleViewModel> Samples { get; set; } = new List<WaterProofingTestSampleViewModel>();
+    public List<SaveWaterProofingTestSampleViewModel> Samples { get; set; } = new List<SaveWaterProofingTestSampleViewModel>();
 }

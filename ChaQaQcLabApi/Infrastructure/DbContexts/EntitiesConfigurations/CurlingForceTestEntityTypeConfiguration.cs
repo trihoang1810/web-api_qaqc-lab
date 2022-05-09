@@ -13,7 +13,7 @@ public class CurlingForceTestEntityTypeConfiguration : IEntityTypeConfiguration<
             .IsUnique();
         curlingForceTestConfiguration
             .Property(c => c.Id)
-            .UseHiLo();
+            .ValueGeneratedOnAdd();
 
         curlingForceTestConfiguration
             .Property(c => c.StartDate)
@@ -48,16 +48,12 @@ public class CurlingForceTestEntityTypeConfiguration : IEntityTypeConfiguration<
                     .IsRequired();
                 c.Property(c => c.DeformationDegree)
                     .IsRequired();
-                c.Property(c => c.NumberOfErrors)
+                c.Property(c => c.NumberOfError)
                     .IsRequired();
-                c.Property(c => c.Note)
-                    .HasMaxLength(256)
-                    .IsRequired();
-            });
 
-        curlingForceTestConfiguration
-            .HasOne(c => c.Tester)
-            .WithMany()
-            .HasForeignKey(c => c.EmployeeId);
+                c.HasOne(c => c.Tester)
+                    .WithMany()
+                    .HasForeignKey(c => c.EmployeeId);
+            });
     }
 }

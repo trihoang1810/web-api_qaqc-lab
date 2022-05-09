@@ -41,7 +41,7 @@ public class ForcedCloseTestsController : Controller
     {
         var test = _mapper.Map<SaveForcedCloseTestViewModel, ForcedCloseTest>(resource);
 
-        var result = await _forcedCloseTestService.PostAsync(test);
+        var result = await _forcedCloseTestService.PostAsync(test, resource.EmployeeId);
 
         if (!result.Success)
         {

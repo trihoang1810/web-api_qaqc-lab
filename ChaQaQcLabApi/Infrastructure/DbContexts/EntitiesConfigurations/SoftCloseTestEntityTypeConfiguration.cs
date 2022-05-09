@@ -13,7 +13,7 @@ public class SoftCloseTestEntityTypeConfiguration : IEntityTypeConfiguration<Sof
             .IsUnique();
         softCloseTestConfiguration
             .Property(s => s.Id)
-            .UseHiLo();
+            .ValueGeneratedOnAdd();
 
         softCloseTestConfiguration
             .Property(s => s.StartDate)
@@ -71,14 +71,10 @@ public class SoftCloseTestEntityTypeConfiguration : IEntityTypeConfiguration<Sof
                             .IsRequired();
                     });
 
-                s.Property(s => s.Note)
-                    .HasMaxLength(256)
-                    .IsRequired();
+                s.HasOne(s => s.Tester)
+                    .WithMany()
+                    .HasForeignKey(s => s.EmployeeId);
             });
 
-        softCloseTestConfiguration
-            .HasOne(s => s.Tester)
-            .WithMany()
-            .HasForeignKey(s => s.EmployeeId);
     }
 }

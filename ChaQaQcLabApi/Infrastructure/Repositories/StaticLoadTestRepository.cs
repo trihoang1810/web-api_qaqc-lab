@@ -11,8 +11,8 @@ public class StaticLoadTestRepository : BaseRepository, IStaticLoadTestRepositor
     {
         var tests = await _context.StaticLoadTests
             .Include(s => s.Samples)
+                .ThenInclude(s => s.Tester)
             .Include(s => s.Product)
-            .Include(s => s.Tester)
             .Where(s =>
                 s.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
                 s.EndDate.CompareTo(query.TimeRange.StopTime.Value) <= 0)
@@ -35,8 +35,8 @@ public class StaticLoadTestRepository : BaseRepository, IStaticLoadTestRepositor
     {
         var tests = await _context.StaticLoadTests
             .Include(s => s.Samples)
+                .ThenInclude(s => s.Tester)
             .Include(s => s.Product)
-            .Include(s => s.Tester)
             .Where(s =>
                 s.ProductId == productId &&
                 s.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
@@ -59,7 +59,10 @@ public class StaticLoadTestRepository : BaseRepository, IStaticLoadTestRepositor
     public async Task AddAsync(Product product, Tester tester, StaticLoadTest staticLoadTest)
     {
         staticLoadTest.Product = product;
-        staticLoadTest.Tester = tester;
+        foreach(StaticLoadTestSample sample in staticLoadTest.Samples)
+        {
+            sample.Tester = tester;
+        }
         await _context.AddRangeAsync(staticLoadTest);
     }
 }

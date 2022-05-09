@@ -21,6 +21,7 @@ builder.Services.AddScoped<IRockTestService, RockTestService>();
 builder.Services.AddScoped<ISoftCloseTestService, SoftCloseTestService>();
 builder.Services.AddScoped<IStaticLoadTestService, StaticLoadTestService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IWaterProofingTestService, WaterProofingTestService>();
 
 // Add Repos
 builder.Services.AddScoped<ITesterRepository, TesterRepository>();
@@ -30,12 +31,14 @@ builder.Services.AddScoped<IRockTestRepository, RockTestRepository>();
 builder.Services.AddScoped<ISoftCloseTestRepository, SoftCloseTestRepository>();
 builder.Services.AddScoped<IStaticLoadTestRepository, StaticLoadTestRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IWaterProofingTestRepository, WaterProofingTestRepository>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("LocalSqlServerIp"));
+    options.UseMySql(builder.Configuration.GetConnectionString("CloudMySql"),
+    Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.26-mysql"));
 });
 builder.Services.AddCors(options =>
     options.AddDefaultPolicy(builder =>

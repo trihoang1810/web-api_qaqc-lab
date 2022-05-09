@@ -32,7 +32,7 @@ public class RockTestService : IRockTestService
 
         return new Response<QueryResult<RockTest>>(tests);
     }
-    public async Task<Response<RockTest>> PostAsync(RockTest resource)
+    public async Task<Response<RockTest>> PostAsync(RockTest resource, string employeeId)
     {
         try
         {
@@ -43,7 +43,7 @@ public class RockTestService : IRockTestService
                 return new Response<RockTest>(error);
             }
 
-            var tester = await _testerRepository.GetByIdAsync(resource.EmployeeId);
+            var tester = await _testerRepository.GetByIdAsync(employeeId);
             if (tester is null)
             {
                 var error = Error.BadRequest("404", "Product not found");

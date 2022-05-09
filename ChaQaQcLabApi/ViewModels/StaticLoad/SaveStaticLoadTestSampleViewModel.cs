@@ -1,6 +1,6 @@
 ﻿namespace ChaQaQcLabApi.ViewModels.StaticLoad;
 
-public class StaticLoadTestSampleViewModel : SampleViewModel
+public class SaveStaticLoadTestSampleViewModel : SaveSampleViewModel
 {
     public string Status { get; set; }
 }

@@ -41,7 +41,7 @@ public class WaterProofingTestsController : Controller
     {
         var test = _mapper.Map<SaveWaterProofingTestViewModel, WaterProofingTest>(resource);
 
-        var result = await _waterProofingTestService.PostAsync(test);
+        var result = await _waterProofingTestService.PostAsync(test, resource.EmployeeId);
 
         if (!result.Success)
         {

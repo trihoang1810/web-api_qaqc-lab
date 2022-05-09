@@ -2,6 +2,6 @@
 
 public class SaveSoftCloseTestViewModel : SaveTestViewModel
 {
-    public List<SoftCloseTestSampleViewModel> Samples { get; set; } = new List<SoftCloseTestSampleViewModel>();
+    public List<SaveSoftCloseTestSampleViewModel> Samples { get; set; } = new List<SaveSoftCloseTestSampleViewModel>();
 
 }

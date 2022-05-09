@@ -13,7 +13,7 @@ public class StaticLoadTestEntityTypeConfiguration : IEntityTypeConfiguration<St
             .IsUnique();
         staticLoadTestConfiguration
             .Property(s => s.Id)
-            .UseHiLo();
+            .ValueGeneratedOnAdd();
 
         staticLoadTestConfiguration
             .Property(s => s.StartDate)
@@ -44,16 +44,12 @@ public class StaticLoadTestEntityTypeConfiguration : IEntityTypeConfiguration<St
                 s.WithOwner();
                 s.Property(s => s.Status)
                     .IsRequired();
-                s.Property(s => s.NumberOfErrors)
+                s.Property(s => s.NumberOfError)
                     .IsRequired();
-                s.Property(s => s.Note)
-                    .IsRequired()
-                    .HasMaxLength(256);
-            });
 
-        staticLoadTestConfiguration
-            .HasOne(s => s.Tester)
-            .WithMany()
-            .HasForeignKey(s => s.EmployeeId);
+                s.HasOne(s => s.Tester)
+                    .WithMany()
+                    .HasForeignKey(s => s.EmployeeId);
+            });
     }
 }

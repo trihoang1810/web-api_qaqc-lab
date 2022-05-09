@@ -11,8 +11,8 @@ public class ForcedCloseTestRepository : BaseRepository, IForcedCloseTestReposit
     {
         var tests = await _context.ForcedCloseTests
             .Include(f => f.Samples)
+                .ThenInclude(f => f.Tester)
             .Include(f => f.Product)
-            .Include(f => f.Tester)
             .Where(f =>
                 f.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
                 f.EndDate.CompareTo(query.TimeRange.StopTime.Value) <= 0)
@@ -35,8 +35,8 @@ public class ForcedCloseTestRepository : BaseRepository, IForcedCloseTestReposit
     {
         var tests = await _context.ForcedCloseTests
             .Include(f => f.Samples)
+                .ThenInclude(f => f.Tester)
             .Include(f => f.Product)
-            .Include(f => f.Tester)
             .Where(f =>
                 f.ProductId == productId &&
                 f.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
@@ -59,7 +59,10 @@ public class ForcedCloseTestRepository : BaseRepository, IForcedCloseTestReposit
     public async Task AddAsync(Product product, Tester tester, ForcedCloseTest forcedCloseTest)
     {
         forcedCloseTest.Product = product;
-        forcedCloseTest.Tester = tester;
+        foreach (ForcedCloseTestSample sample in forcedCloseTest.Samples)
+        {
+            sample.Tester = tester;
+        }
         await _context.AddRangeAsync(forcedCloseTest);
     }
 }

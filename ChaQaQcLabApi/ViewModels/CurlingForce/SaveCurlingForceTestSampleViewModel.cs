@@ -1,6 +1,6 @@
 ﻿namespace ChaQaQcLabApi.ViewModels.CurlingForce;
 
-public class CurlingForceTestSampleViewModel : SampleViewModel
+public class SaveCurlingForceTestSampleViewModel : SaveSampleViewModel
 {
     public double Load { get; set; }
     public int Duration { get; set; }

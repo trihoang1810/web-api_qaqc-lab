@@ -1,6 +1,6 @@
 ﻿namespace ChaQaQcLabApi.ViewModels.SoftClose;
 
-public class SoftCloseTestSampleViewModel : SampleViewModel
+public class SaveSoftCloseTestSampleViewModel : SaveSampleViewModel
 {
     public int NumberOfClosing { get; set; }
     public SoftCloseTestSampleResultViewModel SeatLidResult { get; set; } = new SoftCloseTestSampleResultViewModel();

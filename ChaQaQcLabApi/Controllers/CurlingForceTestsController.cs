@@ -40,9 +40,7 @@ public class CurlingForceTestsController : Controller
     public async Task<IActionResult> PostAsync(SaveCurlingForceTestViewModel resource)
     {
         var test = _mapper.Map<SaveCurlingForceTestViewModel, CurlingForceTest>(resource);
-        var productId = resource.ProductId;
-        var employeeId = resource.EmployeeId;
-        var result = await _curlingForceTestService.PostAsync(test);
+        var result = await _curlingForceTestService.PostAsync(test, resource.EmployeeId);
 
         if (!result.Success)
         {

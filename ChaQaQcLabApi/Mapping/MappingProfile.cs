@@ -30,7 +30,9 @@ public class MappingProfile : Profile
 
         // CurlingForceTestSample mapped
         CreateMap<CurlingForceTestSample, CurlingForceTestSampleViewModel>();
+        CreateMap<CurlingForceTestSample, SaveCurlingForceTestSampleViewModel>();
         CreateMap<CurlingForceTestSampleViewModel, CurlingForceTestSample>();
+        CreateMap<SaveCurlingForceTestSampleViewModel, CurlingForceTestSample>();
 
         // ForcedCloseTest mapped
         CreateMap<ForcedCloseTest, ForcedCloseTestViewModel>();
@@ -41,6 +43,8 @@ public class MappingProfile : Profile
         // ForcedCloseTestSample mapped
         CreateMap<ForcedCloseTestSample, ForcedCloseTestSampleViewModel>();
         CreateMap<ForcedCloseTestSampleViewModel, ForcedCloseTestSample>();
+        CreateMap<ForcedCloseTestSample, SaveForcedCloseTestSampleViewModel>();
+        CreateMap<SaveForcedCloseTestSampleViewModel, ForcedCloseTestSample>();
 
         // ForcedCloseTestSampleResult mapped
         CreateMap<ForcedCloseTestSampleResult, ForcedCloseTestSampleResultViewModel>();
@@ -55,6 +59,8 @@ public class MappingProfile : Profile
         // RockTestSample mapped
         CreateMap<RockTestSample, RockTestSampleViewModel>();
         CreateMap<RockTestSampleViewModel, RockTestSample>();
+        CreateMap<RockTestSample, SaveRockTestSampleViewModel>();
+        CreateMap<SaveRockTestSampleViewModel, RockTestSample>();
 
         // SoftCloseTest mapped
         CreateMap<SoftCloseTest, SoftCloseTestViewModel>();
@@ -64,7 +70,9 @@ public class MappingProfile : Profile
 
         // SoftCloseTestSample mapped
         CreateMap<SoftCloseTestSample, SoftCloseTestSampleViewModel>();
+        CreateMap<SoftCloseTestSample, SaveSoftCloseTestSampleViewModel>();
         CreateMap<SoftCloseTestSampleViewModel, SoftCloseTestSample>();
+        CreateMap<SaveSoftCloseTestSampleViewModel, SoftCloseTestSample>();
 
         // SoftCloseTestSampleResult mapped
         CreateMap<SoftCloseTestSampleResult, SoftCloseTestSampleResultViewModel>();
@@ -79,5 +87,19 @@ public class MappingProfile : Profile
         // StaticLoadTestSample mapped
         CreateMap<StaticLoadTestSample, StaticLoadTestSampleViewModel>();
         CreateMap<StaticLoadTestSampleViewModel, StaticLoadTestSample>();
+        CreateMap<StaticLoadTestSample, SaveStaticLoadTestSampleViewModel>();
+        CreateMap<SaveStaticLoadTestSampleViewModel, StaticLoadTestSample>();
+
+        // WaterProofingTest mapped
+        CreateMap<WaterProofingTest, WaterProofingTestViewModel>();
+        CreateMap<QueryResult<WaterProofingTest>, QueryResult<WaterProofingTestViewModel>>();
+        CreateMap<WaterProofingTestViewModel, WaterProofingTest>();
+        CreateMap<SaveWaterProofingTestViewModel, WaterProofingTest>();
+
+        // WaterProofingTestSample mapped
+        CreateMap<WaterProofingTestSample, WaterProofingTestSampleViewModel>();
+        CreateMap<WaterProofingTestSampleViewModel, WaterProofingTestSample>();
+        CreateMap<WaterProofingTestSample, SaveWaterProofingTestSampleViewModel>();
+        CreateMap<SaveWaterProofingTestSampleViewModel, WaterProofingTestSample>();
     }
 }

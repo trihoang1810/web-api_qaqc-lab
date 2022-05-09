@@ -41,7 +41,7 @@ public class SoftCloseTestsController : Controller
     {
         var test = _mapper.Map<SaveSoftCloseTestViewModel, SoftCloseTest>(resource);
 
-        var result = await _softCloseTestService.PostAsync(test);
+        var result = await _softCloseTestService.PostAsync(test, resource.EmployeeId);
 
         if (!result.Success)
         {

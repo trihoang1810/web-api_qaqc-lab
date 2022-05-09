@@ -32,7 +32,7 @@ public class StaticLoadTestService : IStaticLoadTestService
 
         return new Response<QueryResult<StaticLoadTest>>(tests);
     }
-    public async Task<Response<StaticLoadTest>> PostAsync(StaticLoadTest resource)
+    public async Task<Response<StaticLoadTest>> PostAsync(StaticLoadTest resource, string employeeId)
     {
         try
         {
@@ -43,7 +43,7 @@ public class StaticLoadTestService : IStaticLoadTestService
                 return new Response<StaticLoadTest>(error);
             }
 
-            var tester = await _testerRepository.GetByIdAsync(resource.EmployeeId);
+            var tester = await _testerRepository.GetByIdAsync(employeeId);
             if (tester is null)
             {
                 var error = Error.BadRequest("404", "Product not found");

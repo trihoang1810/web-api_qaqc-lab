@@ -2,5 +2,5 @@
 
 public class SaveStaticLoadViewModel : SaveTestViewModel
 {
-    public List<StaticLoadTestSampleViewModel> Samples { get; set; } = new List<StaticLoadTestSampleViewModel>();
+    public List<SaveStaticLoadTestSampleViewModel> Samples { get; set; } = new List<SaveStaticLoadTestSampleViewModel>();
 }

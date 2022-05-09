@@ -2,6 +2,6 @@
 
 public class SaveForcedCloseTestViewModel : SaveTestViewModel
 {
-    public List<ForcedCloseTestSampleViewModel> Samples { get; set; } = new List<ForcedCloseTestSampleViewModel>();
+    public List<SaveForcedCloseTestSampleViewModel> Samples { get; set; } = new List<SaveForcedCloseTestSampleViewModel>();
 
 }

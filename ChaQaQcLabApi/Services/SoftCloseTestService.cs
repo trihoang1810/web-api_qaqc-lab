@@ -32,7 +32,7 @@ public class SoftCloseTestService : ISoftCloseTestService
 
         return new Response<QueryResult<SoftCloseTest>>(tests);
     }
-    public async Task<Response<SoftCloseTest>> PostAsync(SoftCloseTest resource)
+    public async Task<Response<SoftCloseTest>> PostAsync(SoftCloseTest resource, string employeeId)
     {
         try
         {
@@ -43,7 +43,7 @@ public class SoftCloseTestService : ISoftCloseTestService
                 return new Response<SoftCloseTest>(error);
             }
 
-            var tester = await _testerRepository.GetByIdAsync(resource.EmployeeId);
+            var tester = await _testerRepository.GetByIdAsync(employeeId);
             if (tester is null)
             {
                 var error = Error.BadRequest("404", "Product not found");

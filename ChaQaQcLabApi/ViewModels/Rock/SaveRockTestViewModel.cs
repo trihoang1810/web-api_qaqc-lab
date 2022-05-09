@@ -2,6 +2,6 @@
 
 public class SaveRockTestViewModel : SaveTestViewModel
 {
-    public List<RockTestSampleViewModel> Samples { get; set; } = new List<RockTestSampleViewModel>();
+    public List<SaveRockTestSampleViewModel> Samples { get; set; } = new List<SaveRockTestSampleViewModel>();
 
 }

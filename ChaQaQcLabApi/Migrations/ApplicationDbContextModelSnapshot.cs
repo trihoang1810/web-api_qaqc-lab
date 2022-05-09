@@ -3,7 +3,6 @@ using System;
 using ChaQaQcLabApi.Infrastructure.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -18,12 +17,7 @@ namespace ChaQaQcLabApi.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.4")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.HasSequence("EntityFrameworkHiLoSequence")
-                .IncrementsBy(10);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("ChaQaQcLabApi.Domain.Models.CurlingForce.CurlingForceTest", b =>
                 {
@@ -31,33 +25,25 @@ namespace ChaQaQcLabApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "EntityFrameworkHiLoSequence");
-
-                    b.Property<string>("EmployeeId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)");
-
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Note")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("ProductId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("varchar(40)");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("TestPurpose")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("Id")
                         .IsUnique();
@@ -73,33 +59,25 @@ namespace ChaQaQcLabApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "EntityFrameworkHiLoSequence");
-
-                    b.Property<string>("EmployeeId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)");
-
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Note")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("ProductId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("varchar(40)");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("TestPurpose")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("Id")
                         .IsUnique();
@@ -113,12 +91,12 @@ namespace ChaQaQcLabApi.Migrations
                 {
                     b.Property<string>("Id")
                         .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("varchar(40)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(256)");
 
                     b.HasKey("Id");
 
@@ -134,33 +112,25 @@ namespace ChaQaQcLabApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "EntityFrameworkHiLoSequence");
-
-                    b.Property<string>("EmployeeId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)");
-
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Note")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("ProductId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("varchar(40)");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("TestPurpose")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("Id")
                         .IsUnique();
@@ -176,33 +146,25 @@ namespace ChaQaQcLabApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "EntityFrameworkHiLoSequence");
-
-                    b.Property<string>("EmployeeId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)");
-
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Note")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("ProductId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("varchar(40)");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("TestPurpose")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("Id")
                         .IsUnique();
@@ -218,33 +180,25 @@ namespace ChaQaQcLabApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "EntityFrameworkHiLoSequence");
-
-                    b.Property<string>("EmployeeId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)");
-
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Note")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("ProductId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("varchar(40)");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("TestPurpose")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("Id")
                         .IsUnique();
@@ -258,17 +212,17 @@ namespace ChaQaQcLabApi.Migrations
                 {
                     b.Property<string>("EmployeeId")
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("varchar(40)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
+                        .HasColumnType("varchar(40)");
 
                     b.HasKey("EmployeeId");
 
@@ -278,14 +232,42 @@ namespace ChaQaQcLabApi.Migrations
                     b.ToTable("Testers");
                 });
 
+            modelBuilder.Entity("ChaQaQcLabApi.Domain.Models.WaterProofing.WaterProofingTest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("ProductId")
+                        .IsRequired()
+                        .HasColumnType("varchar(40)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("TestPurpose")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("WaterProofingTests");
+                });
+
             modelBuilder.Entity("ChaQaQcLabApi.Domain.Models.CurlingForce.CurlingForceTest", b =>
                 {
-                    b.HasOne("ChaQaQcLabApi.Domain.Models.Tester", "Tester")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ChaQaQcLabApi.Domain.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
@@ -301,81 +283,56 @@ namespace ChaQaQcLabApi.Migrations
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int");
 
-                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"), 1L, 1);
-
                             b1.Property<double>("DeformationDegree")
-                                .HasColumnType("float");
+                                .HasColumnType("double");
 
                             b1.Property<int>("Duration")
                                 .HasColumnType("int");
 
+                            b1.Property<string>("EmployeeId")
+                                .IsRequired()
+                                .HasColumnType("varchar(20)");
+
                             b1.Property<double>("Load")
-                                .HasColumnType("float");
+                                .HasColumnType("double");
 
                             b1.Property<string>("Note")
                                 .IsRequired()
-                                .HasMaxLength(256)
-                                .HasColumnType("nvarchar(256)");
+                                .HasColumnType("longtext");
 
-                            b1.Property<int>("NumberOfErrors")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("SampleNumber")
+                            b1.Property<int>("NumberOfError")
                                 .HasColumnType("int");
 
                             b1.HasKey("CurlingForceTestId", "Id");
+
+                            b1.HasIndex("EmployeeId");
 
                             b1.ToTable("CurlingForceTestSamples");
 
                             b1.WithOwner()
                                 .HasForeignKey("CurlingForceTestId");
+
+                            b1.HasOne("ChaQaQcLabApi.Domain.Models.Tester", "Tester")
+                                .WithMany()
+                                .HasForeignKey("EmployeeId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
+
+                            b1.Navigation("Tester");
                         });
 
                     b.Navigation("Product");
 
                     b.Navigation("Samples");
-
-                    b.Navigation("Tester");
                 });
 
             modelBuilder.Entity("ChaQaQcLabApi.Domain.Models.ForcedClose.ForcedCloseTest", b =>
                 {
-                    b.HasOne("ChaQaQcLabApi.Domain.Models.Tester", "Tester")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ChaQaQcLabApi.Domain.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.OwnsOne("ChaQaQcLabApi.Domain.Models.ForcedClose.ForcedCloseTestSampleResult", "ExpectedOutcome", b1 =>
-                        {
-                            b1.Property<int>("ForcedCloseTestId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("FallTime")
-                                .HasColumnType("int");
-
-                            b1.Property<bool>("IsIntact")
-                                .HasColumnType("bit");
-
-                            b1.Property<bool>("IsUnleaked")
-                                .HasColumnType("bit");
-
-                            b1.Property<bool>("Passed")
-                                .HasColumnType("bit");
-
-                            b1.HasKey("ForcedCloseTestId");
-
-                            b1.ToTable("ForcedCloseTests");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ForcedCloseTestId");
-                        });
 
                     b.OwnsMany("ChaQaQcLabApi.Domain.Models.ForcedClose.ForcedCloseTestSample", "Samples", b1 =>
                         {
@@ -386,24 +343,36 @@ namespace ChaQaQcLabApi.Migrations
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int");
 
-                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"), 1L, 1);
+                            b1.Property<string>("EmployeeId")
+                                .IsRequired()
+                                .HasColumnType("varchar(20)");
 
                             b1.Property<string>("Note")
                                 .IsRequired()
-                                .HasMaxLength(256)
-                                .HasColumnType("nvarchar(256)");
+                                .HasColumnType("longtext");
 
-                            b1.Property<int>("SampleNumber")
+                            b1.Property<int>("NumberOfClosing")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("NumberOfError")
                                 .HasColumnType("int");
 
                             b1.HasKey("ForcedCloseTestId", "Id");
 
+                            b1.HasIndex("EmployeeId");
+
                             b1.ToTable("ForcedCloseTestSamples");
+
+                            b1.HasOne("ChaQaQcLabApi.Domain.Models.Tester", "Tester")
+                                .WithMany()
+                                .HasForeignKey("EmployeeId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
 
                             b1.WithOwner()
                                 .HasForeignKey("ForcedCloseTestId");
 
-                            b1.OwnsOne("ChaQaQcLabApi.Domain.Models.ForcedClose.ForcedCloseTestSampleResult", "Result", b2 =>
+                            b1.OwnsOne("ChaQaQcLabApi.Domain.Models.ForcedClose.ForcedCloseTestSampleResult", "SeatLidResult", b2 =>
                                 {
                                     b2.Property<int>("ForcedCloseTestSampleForcedCloseTestId")
                                         .HasColumnType("int");
@@ -415,13 +384,13 @@ namespace ChaQaQcLabApi.Migrations
                                         .HasColumnType("int");
 
                                     b2.Property<bool>("IsIntact")
-                                        .HasColumnType("bit");
+                                        .HasColumnType("tinyint(1)");
 
                                     b2.Property<bool>("IsUnleaked")
-                                        .HasColumnType("bit");
+                                        .HasColumnType("tinyint(1)");
 
                                     b2.Property<bool>("Passed")
-                                        .HasColumnType("bit");
+                                        .HasColumnType("tinyint(1)");
 
                                     b2.HasKey("ForcedCloseTestSampleForcedCloseTestId", "ForcedCloseTestSampleId");
 
@@ -431,28 +400,50 @@ namespace ChaQaQcLabApi.Migrations
                                         .HasForeignKey("ForcedCloseTestSampleForcedCloseTestId", "ForcedCloseTestSampleId");
                                 });
 
-                            b1.Navigation("Result")
-                                .IsRequired();
-                        });
+                            b1.OwnsOne("ChaQaQcLabApi.Domain.Models.ForcedClose.ForcedCloseTestSampleResult", "SeatRingResult", b2 =>
+                                {
+                                    b2.Property<int>("ForcedCloseTestSampleForcedCloseTestId")
+                                        .HasColumnType("int");
 
-                    b.Navigation("ExpectedOutcome")
-                        .IsRequired();
+                                    b2.Property<int>("ForcedCloseTestSampleId")
+                                        .HasColumnType("int");
+
+                                    b2.Property<int>("FallTime")
+                                        .HasColumnType("int");
+
+                                    b2.Property<bool>("IsIntact")
+                                        .HasColumnType("tinyint(1)");
+
+                                    b2.Property<bool>("IsUnleaked")
+                                        .HasColumnType("tinyint(1)");
+
+                                    b2.Property<bool>("Passed")
+                                        .HasColumnType("tinyint(1)");
+
+                                    b2.HasKey("ForcedCloseTestSampleForcedCloseTestId", "ForcedCloseTestSampleId");
+
+                                    b2.ToTable("ForcedCloseTestSamples");
+
+                                    b2.WithOwner()
+                                        .HasForeignKey("ForcedCloseTestSampleForcedCloseTestId", "ForcedCloseTestSampleId");
+                                });
+
+                            b1.Navigation("SeatLidResult")
+                                .IsRequired();
+
+                            b1.Navigation("SeatRingResult")
+                                .IsRequired();
+
+                            b1.Navigation("Tester");
+                        });
 
                     b.Navigation("Product");
 
                     b.Navigation("Samples");
-
-                    b.Navigation("Tester");
                 });
 
             modelBuilder.Entity("ChaQaQcLabApi.Domain.Models.Rock.RockTest", b =>
                 {
-                    b.HasOne("ChaQaQcLabApi.Domain.Models.Tester", "Tester")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ChaQaQcLabApi.Domain.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
@@ -468,103 +459,56 @@ namespace ChaQaQcLabApi.Migrations
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int");
 
-                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"), 1L, 1);
+                            b1.Property<string>("EmployeeId")
+                                .IsRequired()
+                                .HasColumnType("varchar(20)");
 
                             b1.Property<double>("Load")
-                                .HasColumnType("float");
+                                .HasColumnType("double");
 
                             b1.Property<string>("Note")
                                 .IsRequired()
-                                .HasMaxLength(256)
-                                .HasColumnType("nvarchar(256)");
+                                .HasColumnType("longtext");
 
-                            b1.Property<int>("NumberOfErrors")
+                            b1.Property<int>("NumberOfError")
                                 .HasColumnType("int");
 
                             b1.Property<bool>("Passed")
-                                .HasColumnType("bit");
+                                .HasColumnType("tinyint(1)");
 
                             b1.Property<int>("TestedTimes")
                                 .HasColumnType("int");
 
                             b1.HasKey("RockTestId", "Id");
 
+                            b1.HasIndex("EmployeeId");
+
                             b1.ToTable("RockTestSamples");
+
+                            b1.HasOne("ChaQaQcLabApi.Domain.Models.Tester", "Tester")
+                                .WithMany()
+                                .HasForeignKey("EmployeeId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
 
                             b1.WithOwner()
                                 .HasForeignKey("RockTestId");
+
+                            b1.Navigation("Tester");
                         });
 
                     b.Navigation("Product");
 
                     b.Navigation("Samples");
-
-                    b.Navigation("Tester");
                 });
 
             modelBuilder.Entity("ChaQaQcLabApi.Domain.Models.SoftClose.SoftCloseTest", b =>
                 {
-                    b.HasOne("ChaQaQcLabApi.Domain.Models.Tester", "Tester")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ChaQaQcLabApi.Domain.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.OwnsOne("ChaQaQcLabApi.Domain.Models.SoftClose.SoftCloseTestSampleResult", "SeatLidExpectedOutcome", b1 =>
-                        {
-                            b1.Property<int>("SoftCloseTestId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("FallTime")
-                                .HasColumnType("int");
-
-                            b1.Property<bool>("IsBumperIntact")
-                                .HasColumnType("bit");
-
-                            b1.Property<bool>("IsUnleaked")
-                                .HasColumnType("bit");
-
-                            b1.Property<bool>("Passed")
-                                .HasColumnType("bit");
-
-                            b1.HasKey("SoftCloseTestId");
-
-                            b1.ToTable("SoftCloseTests");
-
-                            b1.WithOwner()
-                                .HasForeignKey("SoftCloseTestId");
-                        });
-
-                    b.OwnsOne("ChaQaQcLabApi.Domain.Models.SoftClose.SoftCloseTestSampleResult", "SeatRingExpectedOutcome", b1 =>
-                        {
-                            b1.Property<int>("SoftCloseTestId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("FallTime")
-                                .HasColumnType("int");
-
-                            b1.Property<bool>("IsBumperIntact")
-                                .HasColumnType("bit");
-
-                            b1.Property<bool>("IsUnleaked")
-                                .HasColumnType("bit");
-
-                            b1.Property<bool>("Passed")
-                                .HasColumnType("bit");
-
-                            b1.HasKey("SoftCloseTestId");
-
-                            b1.ToTable("SoftCloseTests");
-
-                            b1.WithOwner()
-                                .HasForeignKey("SoftCloseTestId");
-                        });
 
                     b.OwnsMany("ChaQaQcLabApi.Domain.Models.SoftClose.SoftCloseTestSample", "Samples", b1 =>
                         {
@@ -575,19 +519,31 @@ namespace ChaQaQcLabApi.Migrations
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int");
 
-                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"), 1L, 1);
+                            b1.Property<string>("EmployeeId")
+                                .IsRequired()
+                                .HasColumnType("varchar(20)");
 
                             b1.Property<string>("Note")
                                 .IsRequired()
-                                .HasMaxLength(256)
-                                .HasColumnType("nvarchar(256)");
+                                .HasColumnType("longtext");
 
-                            b1.Property<int>("SampleNumber")
+                            b1.Property<int>("NumberOfClosing")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("NumberOfError")
                                 .HasColumnType("int");
 
                             b1.HasKey("SoftCloseTestId", "Id");
 
+                            b1.HasIndex("EmployeeId");
+
                             b1.ToTable("SoftCloseTestSamples");
+
+                            b1.HasOne("ChaQaQcLabApi.Domain.Models.Tester", "Tester")
+                                .WithMany()
+                                .HasForeignKey("EmployeeId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
 
                             b1.WithOwner()
                                 .HasForeignKey("SoftCloseTestId");
@@ -604,13 +560,13 @@ namespace ChaQaQcLabApi.Migrations
                                         .HasColumnType("int");
 
                                     b2.Property<bool>("IsBumperIntact")
-                                        .HasColumnType("bit");
+                                        .HasColumnType("tinyint(1)");
 
                                     b2.Property<bool>("IsUnleaked")
-                                        .HasColumnType("bit");
+                                        .HasColumnType("tinyint(1)");
 
                                     b2.Property<bool>("Passed")
-                                        .HasColumnType("bit");
+                                        .HasColumnType("tinyint(1)");
 
                                     b2.HasKey("SoftCloseTestSampleSoftCloseTestId", "SoftCloseTestSampleId");
 
@@ -632,13 +588,13 @@ namespace ChaQaQcLabApi.Migrations
                                         .HasColumnType("int");
 
                                     b2.Property<bool>("IsBumperIntact")
-                                        .HasColumnType("bit");
+                                        .HasColumnType("tinyint(1)");
 
                                     b2.Property<bool>("IsUnleaked")
-                                        .HasColumnType("bit");
+                                        .HasColumnType("tinyint(1)");
 
                                     b2.Property<bool>("Passed")
-                                        .HasColumnType("bit");
+                                        .HasColumnType("tinyint(1)");
 
                                     b2.HasKey("SoftCloseTestSampleSoftCloseTestId", "SoftCloseTestSampleId");
 
@@ -653,29 +609,17 @@ namespace ChaQaQcLabApi.Migrations
 
                             b1.Navigation("SeatRingResult")
                                 .IsRequired();
+
+                            b1.Navigation("Tester");
                         });
 
                     b.Navigation("Product");
 
                     b.Navigation("Samples");
-
-                    b.Navigation("SeatLidExpectedOutcome")
-                        .IsRequired();
-
-                    b.Navigation("SeatRingExpectedOutcome")
-                        .IsRequired();
-
-                    b.Navigation("Tester");
                 });
 
             modelBuilder.Entity("ChaQaQcLabApi.Domain.Models.StaticLoad.StaticLoadTest", b =>
                 {
-                    b.HasOne("ChaQaQcLabApi.Domain.Models.Tester", "Tester")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ChaQaQcLabApi.Domain.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
@@ -691,33 +635,102 @@ namespace ChaQaQcLabApi.Migrations
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int");
 
-                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"), 1L, 1);
+                            b1.Property<string>("EmployeeId")
+                                .IsRequired()
+                                .HasColumnType("varchar(20)");
 
                             b1.Property<string>("Note")
                                 .IsRequired()
-                                .HasMaxLength(256)
-                                .HasColumnType("nvarchar(256)");
+                                .HasColumnType("longtext");
 
-                            b1.Property<int>("NumberOfErrors")
+                            b1.Property<int>("NumberOfError")
                                 .HasColumnType("int");
 
                             b1.Property<string>("Status")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.HasKey("StaticLoadTestId", "Id");
 
+                            b1.HasIndex("EmployeeId");
+
                             b1.ToTable("StaticLoadTestSamples");
+
+                            b1.HasOne("ChaQaQcLabApi.Domain.Models.Tester", "Tester")
+                                .WithMany()
+                                .HasForeignKey("EmployeeId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
 
                             b1.WithOwner()
                                 .HasForeignKey("StaticLoadTestId");
+
+                            b1.Navigation("Tester");
                         });
 
                     b.Navigation("Product");
 
                     b.Navigation("Samples");
+                });
 
-                    b.Navigation("Tester");
+            modelBuilder.Entity("ChaQaQcLabApi.Domain.Models.WaterProofing.WaterProofingTest", b =>
+                {
+                    b.HasOne("ChaQaQcLabApi.Domain.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsMany("ChaQaQcLabApi.Domain.Models.WaterProofing.WaterProofingTestSample", "Samples", b1 =>
+                        {
+                            b1.Property<int>("WaterProofingTestId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Duration")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("EmployeeId")
+                                .IsRequired()
+                                .HasColumnType("varchar(20)");
+
+                            b1.Property<string>("Note")
+                                .IsRequired()
+                                .HasColumnType("longtext");
+
+                            b1.Property<int>("NumberOfError")
+                                .HasColumnType("int");
+
+                            b1.Property<bool>("Passed")
+                                .HasColumnType("tinyint(1)");
+
+                            b1.Property<double>("Temperature")
+                                .HasColumnType("double");
+
+                            b1.HasKey("WaterProofingTestId", "Id");
+
+                            b1.HasIndex("EmployeeId");
+
+                            b1.ToTable("WaterProofingTestSamples");
+
+                            b1.HasOne("ChaQaQcLabApi.Domain.Models.Tester", "Tester")
+                                .WithMany()
+                                .HasForeignKey("EmployeeId")
+                                .OnDelete(DeleteBehavior.Cascade)
+                                .IsRequired();
+
+                            b1.WithOwner()
+                                .HasForeignKey("WaterProofingTestId");
+
+                            b1.Navigation("Tester");
+                        });
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Samples");
                 });
 #pragma warning restore 612, 618
         }

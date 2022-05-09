@@ -11,8 +11,8 @@ public class RockTestRepository : BaseRepository, IRockTestRepository
     {
         var tests = await _context.RockTests
             .Include(r => r.Samples)
+                .ThenInclude(r => r.Tester)
             .Include(r => r.Product)
-            .Include(r => r.Tester)
             .Where(r =>
                 r.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
                 r.EndDate.CompareTo(query.TimeRange.StopTime.Value) <= 0)
@@ -35,8 +35,8 @@ public class RockTestRepository : BaseRepository, IRockTestRepository
     {
         var tests = await _context.RockTests
             .Include(r => r.Samples)
+                .ThenInclude(r => r.Tester)
             .Include(r => r.Product)
-            .Include(r => r.Tester)
             .Where(r =>
                 r.ProductId == productId &&
                 r.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
@@ -59,7 +59,10 @@ public class RockTestRepository : BaseRepository, IRockTestRepository
     public async Task AddAsync(Product product, Tester tester, RockTest rockTest)
     {
         rockTest.Product = product;
-        rockTest.Tester = tester;
+        foreach (RockTestSample sample in rockTest.Samples)
+        {
+            sample.Tester = tester;
+        }
         await _context.AddRangeAsync(rockTest);
     }
 }

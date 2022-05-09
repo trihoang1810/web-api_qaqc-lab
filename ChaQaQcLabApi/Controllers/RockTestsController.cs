@@ -41,7 +41,7 @@ public class RockTestsController : Controller
     {
         var test = _mapper.Map<SaveRockTestViewModel, RockTest>(resource);
 
-        var result = await _rockTestService.PostAsync(test);
+        var result = await _rockTestService.PostAsync(test, resource.EmployeeId);
 
         if (!result.Success)
         {

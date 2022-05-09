@@ -10,13 +10,13 @@ public class WaterProofingTestRepository : BaseRepository, IWaterProofingTestRep
     public async Task<QueryResult<WaterProofingTest>> GetAllAsync(TimeQuery query)
     {
         var tests = await _context.WaterProofingTests
-            .Include(s => s.Samples)
-            .Include(s => s.Product)
-            .Include(s => s.Tester)
-            .Where(s =>
-                s.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
-                s.EndDate.CompareTo(query.TimeRange.StopTime.Value) <= 0)
-            .OrderByDescending(s => s.EndDate)
+            .Include(w => w.Samples)
+                .ThenInclude(w => w.Tester)
+            .Include(w => w.Product)
+            .Where(w =>
+                w.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
+                w.EndDate.CompareTo(query.TimeRange.StopTime.Value) <= 0)
+            .OrderByDescending(w => w.EndDate)
             .AsNoTracking()
             .Skip((query.Page - 1) * query.ItemsPerPage)
             .Take(query.ItemsPerPage)
@@ -34,14 +34,13 @@ public class WaterProofingTestRepository : BaseRepository, IWaterProofingTestRep
     public async Task<QueryResult<WaterProofingTest>> GetByProductIdAsync(string productId, TimeQuery query)
     {
         var tests = await _context.WaterProofingTests
-            .Include(s => s.Samples)
-            .Include(s => s.Product)
-            .Include(s => s.Tester)
-            .Where(s =>
-                s.ProductId == productId &&
-                s.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
-                s.EndDate.CompareTo(query.TimeRange.StopTime.Value) <= 0)
-            .OrderByDescending(c => c.EndDate)
+            .Include(w => w.Samples)
+            .Include(w => w.Product)
+            .Where(w =>
+                w.ProductId == productId &&
+                w.EndDate.CompareTo(query.TimeRange.StartTime.Value) >= 0 &&
+                w.EndDate.CompareTo(query.TimeRange.StopTime.Value) <= 0)
+            .OrderByDescending(w => w.EndDate)
             .AsNoTracking()
             .Skip((query.Page - 1) * query.ItemsPerPage)
             .Take(query.ItemsPerPage)
@@ -59,7 +58,10 @@ public class WaterProofingTestRepository : BaseRepository, IWaterProofingTestRep
     public async Task AddAsync(Product product, Tester tester, WaterProofingTest waterProofingTest)
     {
         waterProofingTest.Product = product;
-        waterProofingTest.Tester = tester;
+        foreach (WaterProofingTestSample sample in waterProofingTest.Samples)
+        {
+            sample.Tester = tester;
+        }
         await _context.AddRangeAsync(waterProofingTest);
     }
 }

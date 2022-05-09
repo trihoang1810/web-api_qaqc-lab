@@ -9,6 +9,4 @@ public class Test
     public string ProductId { get; set; }
     public TestPurpose TestPurpose { get; set; }
     public string Note { get; set; }
-    public Tester Tester { get; set; }
-    public string EmployeeId { get; set; }
 }

@@ -13,7 +13,7 @@ public class WaterProofingTestEntityTypeConfiguration : IEntityTypeConfiguration
             .IsUnique();
         builder
             .Property(w => w.Id)
-            .UseHiLo();
+            .ValueGeneratedOnAdd();
 
         builder
             .Property(w => w.StartDate)
@@ -50,14 +50,10 @@ public class WaterProofingTestEntityTypeConfiguration : IEntityTypeConfiguration
                     .IsRequired();
                 w.Property(w => w.NumberOfError)
                     .IsRequired();
-                w.Property(w => w.Note)
-                    .IsRequired()
-                    .HasMaxLength(256);
-            });
 
-        builder
-            .HasOne(w => w.Tester)
-            .WithMany()
-            .HasForeignKey(w => w.EmployeeId);
+                w.HasOne(w => w.Tester)
+                    .WithMany()
+                    .HasForeignKey(w => w.EmployeeId);
+            });
     }
 }

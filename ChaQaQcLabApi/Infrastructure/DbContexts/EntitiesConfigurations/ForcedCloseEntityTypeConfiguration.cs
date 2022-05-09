@@ -13,7 +13,7 @@ public class ForcedCloseEntityTypeConfiguration : IEntityTypeConfiguration<Force
             .IsUnique();
         forcedCloseTestConfiguration
             .Property(f => f.Id)
-            .UseHiLo();
+            .ValueGeneratedOnAdd();
 
         forcedCloseTestConfiguration
             .Property(f => f.StartDate)
@@ -47,9 +47,6 @@ public class ForcedCloseEntityTypeConfiguration : IEntityTypeConfiguration<Force
                     .IsRequired();
                 f.Property(f => f.NumberOfError)
                     .IsRequired();
-                f.Property(f => f.Note)
-                    .IsRequired()
-                    .HasMaxLength(256);
 
                 f.OwnsOne(f => f.SeatRingResult,
                     f =>
@@ -79,12 +76,9 @@ public class ForcedCloseEntityTypeConfiguration : IEntityTypeConfiguration<Force
                             .IsRequired();
                     });
 
+                f.HasOne(f => f.Tester)
+                    .WithMany()
+                    .HasForeignKey(f => f.EmployeeId);
             });
-
-        forcedCloseTestConfiguration
-            .HasOne(f => f.Tester)
-            .WithMany()
-            .HasForeignKey(f => f.EmployeeId);
-
     }
 }

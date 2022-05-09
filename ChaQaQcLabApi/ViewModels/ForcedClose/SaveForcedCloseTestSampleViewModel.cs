@@ -1,6 +1,6 @@
 ﻿namespace ChaQaQcLabApi.ViewModels.ForcedClose;
 
-public class ForcedCloseTestSampleViewModel : SampleViewModel
+public class SaveForcedCloseTestSampleViewModel : SaveSampleViewModel
 {
     public int NumberOfClosing { get; set; }
     public ForcedCloseTestSampleResultViewModel SeatRingResult { get; set; } = new ForcedCloseTestSampleResultViewModel();

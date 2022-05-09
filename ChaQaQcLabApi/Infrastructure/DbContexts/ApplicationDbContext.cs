@@ -35,5 +35,6 @@ public class ApplicationDbContext : DbContext
         builder.ApplyConfiguration(new RockTestEntityTypeConfiguration());
         builder.ApplyConfiguration(new SoftCloseTestEntityTypeConfiguration());
         builder.ApplyConfiguration(new StaticLoadTestEntityTypeConfiguration());
+        builder.ApplyConfiguration(new WaterProofingTestEntityTypeConfiguration());
     }
 }

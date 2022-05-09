@@ -4,5 +4,5 @@ public interface IStaticLoadTestService
 {
     Task<QueryResult<StaticLoadTest>> GetAllAsync(TimeQuery query);
     Task<Response<QueryResult<StaticLoadTest>>> GetByProductIdAsync(string productId, TimeQuery query);
-    Task<Response<StaticLoadTest>> PostAsync(StaticLoadTest test);
+    Task<Response<StaticLoadTest>> PostAsync(StaticLoadTest test, string employeeId);
 }
