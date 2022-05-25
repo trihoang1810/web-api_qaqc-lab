@@ -1,3 +1,4 @@
+using ChaQaQcLabApi.Hubs;
 using ChaQaQcLabApi.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +34,8 @@ builder.Services.AddScoped<IStaticLoadTestRepository, StaticLoadTestRepository>(
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IWaterProofingTestRepository, WaterProofingTestRepository>();
 
+builder.Services.AddSignalR();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -65,5 +68,8 @@ app.UseCors();
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+app.MapHub<RealtimeCommunicationHub>("/hub");
 
 app.Run();
